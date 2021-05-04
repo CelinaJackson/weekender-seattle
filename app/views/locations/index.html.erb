@@ -1,0 +1,4 @@
+<h1>All Locations</h1>
+<h2><% @locations.each do |location|%></h2>
+    <p><%= link_to location.city, location.state, location_path(location) %></p>
+<% end  %> 

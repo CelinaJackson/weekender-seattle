@@ -1,5 +1,6 @@
 <h1>All Trips</h1>
 <h2><% @trips.each do |trip|%></h2>
-    <p><%= link_to trip.title, trip_path(trip) %></p>
-    <p><%= trip.location.city, trip.location.state trip.location.zipcode %></p>
+    <p><%= link_to trip.user.title, user_trips_path(trip.user) %></p>
+    <p><%= trip.location %></p>
 <% end  %> 
+<%= button_to "Create A New Trip", new_user_trip_path %>
