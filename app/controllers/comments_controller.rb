@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     end 
 
     def new 
-        @comment = Comment.new
+        @comment = Comment.new(comment_params)
     end 
     
     def create 
