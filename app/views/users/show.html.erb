@@ -1,4 +1,10 @@
 <h1>Weekender</h1>
 
- 
-<%= link_to "New Trip", new_trip_path %>
+<h2><%= @user.first_name %><h2>
+
+<%= link_to "New Trip", new_user_trip_path(@user) %>
+
+<p>Trips:</p>
+<% @user.trips.each do |trip| %> 
+    <div><%= trip.title %></div>
+<% end %> 

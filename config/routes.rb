@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  resources :static, :users, :sessions, :trips, :locations, :comments
+  resources :static
+  resources :users
+  resources :sessions, only: [:new, :create]
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  resources :trips
+  resources :locations
+  resources :comments
   resources :users, only: [:show] do 
     resources :trips, only: [:index, :show, :new, :create, :edit, :update]
   end 

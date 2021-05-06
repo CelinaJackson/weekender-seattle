@@ -12,7 +12,7 @@ class TripsController < ApplicationController
     end 
 
     def new 
-        @trip = Trip.new(trip_params)
+        @trip = Trip.new(user_id: params[:user_id])
     end 
 
     def create 
@@ -42,7 +42,7 @@ class TripsController < ApplicationController
     private 
 
     def trip_params 
-        params.permit(:title, :content, location_attributes: [:city, :state, :zipcode])
+        params.require(:trip).permit(:title, :content, :user_id, location_attributes: [:city, :state, :zipcode])
     end 
 
 end 

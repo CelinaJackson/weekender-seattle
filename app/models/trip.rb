@@ -1,6 +1,6 @@
 class Trip < ActiveRecord::Base 
     belongs_to :user 
-    has_one :location
+    has_many :location
     accepts_nested_attributes_for :location
     has_many :comments 
     validates :title, presence: true 
