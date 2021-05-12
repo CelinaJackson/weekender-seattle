@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
     protect_from_forgery with: :exception
-    before_action :login_required 
+    before_action :login_required
+    skip_before_action :login_required, only: [:new, :create]
 
     def login_required
         if !logged_in? 

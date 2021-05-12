@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController 
    
     def new 
-
+        if logged_in?
+            redirect_to user_path(current_user)
+        end
     end 
 
     def create 
@@ -16,15 +18,24 @@ class SessionsController < ApplicationController
     end 
 
     def omniauth 
+         user = User.create_from_omniauth(auth)
+         if user.valid?
+            session[:user_id] = user.id
+            redirect_to user_path(user.id)
+        else
+            flash[:message] = "#{user.errors.full_messages.join("")}."
+            redirect_to login_path
+        end
     end 
 
     def destroy 
-        session.delete :user_id
-        redirect_to root_path 
+        session.delete(:user_id)
+        redirect_to login_path
     end 
 
     private 
 
     def auth 
+        request.env['omniauth.auth']
     end 
 end 
