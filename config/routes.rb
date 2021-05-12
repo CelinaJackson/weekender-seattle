@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :static
+  get 'auth/google_oauth2/callback', to: 'sessions#auth'
+  get 'auth/failure', to: redirect('/')
   resources :users
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#show'
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
   resources :trips
   resources :locations
   resources :comments
