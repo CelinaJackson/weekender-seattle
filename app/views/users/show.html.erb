@@ -1,10 +1,11 @@
+<%= render 'layouts/header' %>
 <h1>Weekender</h1>
 
-<h2><%= @user.first_name %><h2>
+<h2>Current User: <%= current_user.first_name %><h2>
 
-<%= link_to "New Trip", new_user_trip_path(@user) %>
+<%= button_to "Create New Trip", new_user_trip_path(@user), method: :get %>
 
 <p>Trips:</p>
 <% @user.trips.each do |trip| %> 
-    <div><%= trip.title %></div>
+    <div><%= button_to trip.title %></div>
 <% end %> 

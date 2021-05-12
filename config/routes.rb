@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :static
   resources :users
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#show'
   resources :sessions, only: [:new, :create]
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

@@ -1,4 +1,6 @@
+<%= render 'layouts/header' %>
 <h1><%= @trip.title %></h1><br>
 <h2>Location:<%= @trip.location%></h2><br>
 <h2>About This Trip: <%= @trip.content %></h2><br>
-  
+
+<%= button_to "Delete Trip", trip_path(@trip), method: :delete %> 

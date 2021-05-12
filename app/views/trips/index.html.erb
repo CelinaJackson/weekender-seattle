@@ -1,6 +1,6 @@
+<%= render 'layouts/header' %>
+<%= button_to "Create A New Trip", new_trip_path, method: :get %>
 <h1>All Trips</h1>
 <h2><% @trips.each do |trip|%></h2>
-    <p><%= link_to trip.user.title, user_trips_path(trip.user) %></p>
-    <p><%= trip.location %></p>
-    <%= button_to "Create A New Trip", new_user_trip_path(@trip.user) %>
+    <p><%= link_to trip.title, trip_path(trip) %></p>
 <% end  %> 
